@@ -1,3 +1,3 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/holgerverse/holgerdocs/badge)](https://www.codefactor.io/repository/github/holgerverse/holgerdocs)
-[![GitHub Super-Linter](https://github.com/holgerverse/holgerdocs/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![Linting Code Base](https://github.com/holgerverse/holgerdocs/actions/workflows/linting.yml/badge.svg)](https://github.com/holgerverse/holgerdocs/actions/workflows/linting.yml)
 # holgerdocs
