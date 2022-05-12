@@ -1,0 +1,22 @@
+{
+  "assigneesFromCodeOwners": true,
+  "assignAutomerge": true,
+  "automerge": false,
+  "automergeType": "pr",
+  "major": {
+    "dependencyDashboardAprroval": true
+  },
+  "dependencyDashboard" : true,
+  "constraints": {
+    "go": "1.18"
+  },
+  "extends": [
+    "config:base"
+  ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch", "pin", "digset"],
+      "automerge": true
+    }
+  ]
+}

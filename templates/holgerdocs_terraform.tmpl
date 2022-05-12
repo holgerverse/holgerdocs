@@ -1,0 +1,26 @@
+# {{if .Title}}{{.Title}}{{else}}Please provide a title for your module.{{end}}
+{{if .Description}}{{.Description}}{{else}}Please provide a description for your module.{{end}}
+## Table of Contents
+[Example usage](#example-usage)<br/>
+[Variables](#variables)<br/>
+[Outputs](#outputs)<br/>
+## Example Usage
+```hcl
+{{.ExampleUsage -}}
+```
+{{ if .Variables -}}
+## Variables
+| Name | Description | Type | Default | Sensitive |
+|------|-------------|------|---------|-----------|
+{{range .Variables -}}
+|{{- .name }}|{{- .description }}|{{- .type }}|{{- .default }}|{{- .sensitive }}|
+{{end -}}
+{{end -}}
+{{if .Outputs -}}
+## Outputs
+| Name | Description | Value | Sensitive |
+|------|-------------|-------|-----------|
+{{range .Outputs -}}
+|{{- .name }}|{{- .description }}|{{- .value }}|{{- .sensitive }}|
+{{end -}}
+{{end -}}

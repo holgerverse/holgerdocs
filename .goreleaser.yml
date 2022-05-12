@@ -1,0 +1,22 @@
+project_name: "Holgersync"
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - id: "holgersync"
+    main: ./cmd
+    binary: holgersync
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    no_unique_dist_dir: true
+
+release:
+  mode: replace
+  name_template: "{{.ProjectName}}-{{.Version}}"
+  header: |
+    ## Holgersync release {{ .Tag }}
