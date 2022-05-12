@@ -8,6 +8,22 @@
 ```hcl
 {{.ExampleUsage -}}
 ```
+{{ if .Resources -}}
+## Resources
+|Type|Name|
+|---|-----|
+{{ range .Resources -}}
+|{{- .type}}|{{- .name}}|
+{{ end -}}
+{{ end -}}
+## Dependencies
+{{ if .Dependencies -}}
+|Type|Name|
+|---|-----|
+{{ range .Dependencies -}}
+|{{- .type}}|{{- .name}}|
+{{ end -}}
+{{ end -}}
 {{ if .Variables -}}
 ## Variables
 | Name | Description | Type | Default | Sensitive |

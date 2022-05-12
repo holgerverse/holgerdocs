@@ -1,1 +1,12 @@
-resource "null_resource" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}
+resource "null_resource" "test" {}

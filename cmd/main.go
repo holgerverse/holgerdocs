@@ -1,4 +1,4 @@
-package holgerdocs
+package main
 
 import (
 	"log"
@@ -9,35 +9,28 @@ import (
 
 func main() {
 	app := &cli.App{
-		Name:  "holgersync",
-		Usage: "Manage IaC from the CLI.",
-		Flags: []cli.Flag{
-			&cli.StringFlag{
-				Name:  "debug",
-				Usage: "Enable debug mode",
-			},
-		},
+		Name:  "holgerdocs",
+		Usage: "Generate documentation for your Infrastructure as Code configuration.",
 		Commands: []*cli.Command{{
-			Name:     "holgerdocs",
-			Category: "cli-commands",
-			Subcommands: []*cli.Command{{
-				Name:      "terraform",
-				HelpName:  "terraform",
-				Category:  "holgerdocs",
-				Usage:     "holgersync hoglerdocs terraform --module-path=<path>",
-				UsageText: "Generate documentation for Terraform modules.",
-				Flags: []cli.Flag{
-					&cli.StringFlag{
-						Name:     "module-path",
-						Usage:    "Relative path to the Terraform module you want to perform actions on.",
-						Required: true,
-					},
+			Name:  "generate",
+			Usage: "Generate documentation.",
+			Flags: []cli.Flag{
+				&cli.StringFlag{
+					Name:     "module-path",
+					Aliases:  []string{"path"},
+					Usage:    "Relative path to the Terraform module you want to perform actions on.",
+					Required: true,
 				},
-				Action: func(c *cli.Context) error {
-					holgerdocs(absolutePath(c.String("module-path")), "terraform")
-					return nil
+				&cli.BoolFlag{
+					Name:     "terraform",
+					Aliases:  []string{"tf"},
+					Usage:    "Specify if you want to generate documentation for Terraform files.",
+					Required: false,
 				},
 			},
+			Action: func(c *cli.Context) error {
+				holgerdocs(absolutePath(c.String("module-path")), c.Bool("terraform"))
+				return nil
 			},
 		}}}
 

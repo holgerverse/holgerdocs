@@ -1,4 +1,4 @@
-package holgerdocs
+package main
 
 import (
 	"io/ioutil"
@@ -13,6 +13,8 @@ type MarkdownContent struct {
 	Title        string
 	Description  string
 	ExampleUsage string
+	Resources    []map[string]string
+	Dependencies []map[string]string
 	Variables    []map[string]string
 	Outputs      []map[string]string
 }

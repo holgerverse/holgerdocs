@@ -1,4 +1,4 @@
-package holgerdocs
+package main
 
 import (
 	"log"
@@ -28,11 +28,13 @@ type Output struct {
 }
 
 type Resource struct {
+	Type    string   `hcl:"type,label"`
 	Name    string   `hcl:"name,label"`
 	Options hcl.Body `hcl:",remain"`
 }
 
 type Data struct {
+	Type    string   `hcl:"type,label"`
 	Name    string   `hcl:"name,label"`
 	Options hcl.Body `hcl:",remain"`
 }
@@ -45,7 +47,7 @@ type Config struct {
 }
 
 func createDocs(hclPath string) map[string][]map[string]string {
-	var variables, outputs []map[string]string
+	var variables, outputs, resources, data []map[string]string
 
 	parsedConfig := make(map[string][]map[string]string)
 	hclConfig := make(map[string][]byte)
@@ -95,7 +97,14 @@ func createDocs(hclPath string) map[string][]map[string]string {
 			"sensitive": strconv.FormatBool(v.Sensitive), "value": v.Value})
 	}
 
-	parsedConfig["variables"], parsedConfig["outputs"] = variables, outputs
+	for _, v := range c.Resources {
+		resources = append(resources, map[string]string{"type": v.Type, "name": v.Name})
+	}
 
+	for _, v := range c.Data {
+		data = append(data, map[string]string{"type": v.Type, "name": v.Name})
+	}
+	parsedConfig["variables"], parsedConfig["outputs"],
+		parsedConfig["resources"], parsedConfig["data"] = variables, outputs, resources, data
 	return parsedConfig
 }
