@@ -1,4 +1,4 @@
-package holgerdocs
+package main
 
 import (
 	"fmt"
