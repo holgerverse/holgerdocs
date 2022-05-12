@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"strconv"
@@ -105,10 +104,7 @@ func createDocs(hclPath string) map[string][]map[string]string {
 	for _, v := range c.Data {
 		data = append(data, map[string]string{"type": v.Type, "name": v.Name})
 	}
-
-	parsedConfig["variables"], parsedConfig["outputs"], parsedConfig["resources"], parsedConfig["data"] = variables, outputs, resources, data
-
-	fmt.Println(parsedConfig)
-
+	parsedConfig["variables"], parsedConfig["outputs"],
+		parsedConfig["resources"], parsedConfig["data"] = variables, outputs, resources, data
 	return parsedConfig
 }
