@@ -1,11 +1,11 @@
-project_name: "Holgersync"
+project_name: "holgerdocs"
 before:
   hooks:
     - go mod tidy
 builds:
-  - id: "holgersync"
+  - id: "holgerdocs"
     main: ./cmd
-    binary: holgersync
+    binary: holgerdocs
     goos:
       - linux
       - windows
@@ -19,4 +19,4 @@ release:
   mode: replace
   name_template: "{{.ProjectName}}-{{.Version}}"
   header: |
-    ## Holgersync release {{ .Tag }}
+    ## Holgerdocs release {{ .Tag }}
