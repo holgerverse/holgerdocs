@@ -11,11 +11,11 @@ import (
 
 var readmePath string
 
-func holgerdocs(folderPath string, softwareName string) {
+func holgerdocs(folderPath string, terraform bool) {
 	readmePath = folderPath + "/README.md"
 
-	switch softwareName {
-	case "terraform":
+	switch {
+	case terraform:
 		createDocsForTerraform(folderPath)
 	default:
 		fmt.Println("No documentation available for this software.")
@@ -33,8 +33,12 @@ func createDocsForTerraform(folderPath string) {
 	existingContent := parseMarkdown(readmePath)
 
 	// Create finished Markdown object which holds all data to be rendered
-	markdownContent := MarkdownContent{Title: existingContent["title"], Description: existingContent["description"],
+	markdownContent := MarkdownContent{
+		Title:        existingContent["title"],
+		Description:  existingContent["description"],
 		ExampleUsage: existingContent["example_usage"],
+		Resources:    collectedConfig["resources"],
+		Dependencies: collectedConfig["data"],
 		Variables:    collectedConfig["variables"],
 		Outputs:      collectedConfig["outputs"]}
 

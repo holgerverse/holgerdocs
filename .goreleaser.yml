@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 project_name: "holgerdocs"
+=======
+project_name: "Holgerdocs"
+>>>>>>> dev
 before:
   hooks:
     - go mod tidy
@@ -19,4 +23,8 @@ release:
   mode: replace
   name_template: "{{.ProjectName}}-{{.Version}}"
   header: |
+<<<<<<< HEAD
     ## Holgerdocs release {{ .Tag }}
+=======
+    ## Hoglerdocs release {{ .Tag }}
+>>>>>>> dev

@@ -10,6 +10,25 @@ variable "example_variable" {
   default = "example_value"
 }
 ```
+## Resources
+|Type|Name|
+|---|-----|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+|null_resource|test|
+## Dependencies
+|Type|Name|
+|---|-----|
+|foo|bar|
 ## Variables
 | Name | Description | Type | Default | Sensitive |
 |------|-------------|------|---------|-----------|
